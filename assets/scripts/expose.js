@@ -2,8 +2,7 @@
 
 const jsConfetti = new JSConfetti();
 
-
-window.addEventListener('DOMContentLoaded', init);
+window.addEventListener("DOMContentLoaded", init);
 
 function init() {
     const select = document.getElementById("horn-select");

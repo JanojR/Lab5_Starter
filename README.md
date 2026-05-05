@@ -3,5 +3,5 @@ Make sure you make a PR to your own repo's main and not the class' repo!! Otherw
 
 Name: Janoj Rengaraj  
 
-[Expose site](expose.html)
+[Expose site](expose.html)  
 [Explore site](explore.html)
