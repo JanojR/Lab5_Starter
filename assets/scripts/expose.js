@@ -7,25 +7,39 @@ function init() {
     const horn = document.querySelector("#expose > img");
     const volImg = document.querySelector("#volume-controls img");
     const volCntrl = document.querySelector("#volume-controls input");
+    const audio = document.querySelector(".hidden");
+    const playButton = document.querySelector("button");
 
     select.addEventListener("change", (event) => {
-        handleSelect(event, horn);
+        handleSelect(event, horn, audio);
     });
 
-    volCntrl.addEventListener("change", (event) => {
-        handleVolume(event, volImg);
+    volCntrl.addEventListener("input", (event) => {
+        handleVolume(event, volImg, audio);
+    });
+
+    playButton.addEventListener("click", () => {
+        if (select.value == "select") {
+            return;
+        }
+        audio.currentTime = 0;
+        audio.play()
     });
 }
 
-function handleSelect(event, horn) {
-    const newImg = event.target.value;
-    const newSrc = "assets/images/" + newImg + ".svg";
-    horn.src = newSrc;
+function handleSelect(event, horn, audio) {
+    const val = event.target.value;
+    const newImg = "assets/images/" + val + ".svg";
+    const newAudio = "assets/audio/" + val + ".mp3";
+    horn.src = newImg;
+    audio.src = newAudio;
 }
 
-function handleVolume(event, image) {
+function handleVolume(event, image, audio) {
     const val = event.target.value;
     let newSrc = "assets/icons/volume-level-";
+    let newAud = val / 100;
+    //console.log(newAud);
     if (val == 0) {
         newSrc += "0.svg";
     } else if (val >= 1 && val < 33) {
@@ -35,6 +49,7 @@ function handleVolume(event, image) {
     } else {
         newSrc += "3.svg";
     }
-    console.log(val);
+    //console.log(val);
     image.src = newSrc;
+    audio.volume = newAud;
 }
