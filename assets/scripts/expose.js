@@ -1,5 +1,8 @@
 // expose.js
 
+const jsConfetti = new JSConfetti();
+
+
 window.addEventListener('DOMContentLoaded', init);
 
 function init() {
@@ -23,7 +26,10 @@ function init() {
             return;
         }
         audio.currentTime = 0;
-        audio.play()
+        audio.play();
+        if (select.value == "party-horn") {
+            jsConfetti.addConfetti();
+        }
     });
 }
 
